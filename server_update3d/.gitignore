@@ -42,3 +42,4 @@ next-env.d.ts
 # macOS junk files
 .DS_Store
 ._*
+./package-lock.json
