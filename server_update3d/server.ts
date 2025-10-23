@@ -43,19 +43,24 @@ const swaggerSpec = swaggerJSDoc({
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Mongo connection
-const DATABASE_URI =
-  process.env.DATABASE_URI ||
-  "mongodb://chikarin:123@localhost:27017/model3D?authSource=admin";
+const DATABASE_URI = process.env.DATABASE_URI || "mongodb+srv://ninhhoaithanh:test123@cluster0.e9juedj.mongodb.net/";
+
+console.log("Full connection string length:", DATABASE_URI.length);
+console.log("Connecting to MongoDB with URI:", DATABASE_URI.replace(/\/\/.*@/, "//***:***@"));
 
 mongoose
-  .connect(DATABASE_URI)
+  .connect(DATABASE_URI, {
+    dbName: "model3d_database"
+  })
   .then(() => {
-    const port = Number(process.env.PORT) || 1909;
+    const port = 3001;
     app.listen(port, () => {
       // eslint-disable-next-line no-console
       console.log(`Server running on http://localhost:${port}`);
       // eslint-disable-next-line no-console
       console.log(`Swagger docs on http://localhost:${port}/api-docs`);
+      // eslint-disable-next-line no-console
+      console.log(`Connected to MongoDB Atlas`);
     });
   })
   .catch((err) => {

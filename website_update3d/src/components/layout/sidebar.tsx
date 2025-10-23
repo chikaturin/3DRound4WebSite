@@ -1,7 +1,13 @@
 "use client";
 
 import React from "react";
-import { Cable as Cube, Upload, LayoutDashboard, Settings } from "lucide-react";
+import {
+  Cable as Cube,
+  Upload,
+  LayoutDashboard,
+  Settings,
+  VideoIcon,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -9,6 +15,7 @@ import Link from "next/link";
 const navigation = [
   { name: "Dashboard", href: "/", icon: LayoutDashboard },
   { name: "Upload", href: "/upload", icon: Upload },
+  { name: "MediaPipe", href: "/MediaPipe", icon: VideoIcon },
 ];
 
 export default function Sidebar() {
